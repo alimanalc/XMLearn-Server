@@ -53,7 +53,7 @@ app.post("/updateMascota/:name", cors(), (req, res, next) => {
     var pet = http.request(options, function (res3) {
         console.log('STATUS: ' + res3.statusCode);
         console.log('HEADERS: ' + JSON.stringify(res3.headers));
-        res.status(res3.statusCode).send();
+        res.status(res3.statusCode).send({ 'status': res3.statusCode });
         res3.setEncoding('utf8');
         res3.on('data', function (chunk) {
             console.log('BODY: ' + chunk);
@@ -82,7 +82,7 @@ app.post("/signin", cors(), (req, res, next) => {
     var options = {
         host: 'localhost',
         port: '8080',
-        path: '/exist/rest/db/apps/XMLearn/Users/' + req.body.username + '.xml',
+        path: '/exist/rest/db/apps/XMLearn/Users/' + req.body.name + '.xml',
         method: "PUT",
         headers: {
             'Content-Type': 'text/xml',
@@ -94,7 +94,7 @@ app.post("/signin", cors(), (req, res, next) => {
     var pet = http.request(options, function (res3) {
         console.log('STATUS: ' + res3.statusCode);
         console.log('HEADERS: ' + JSON.stringify(res3.headers));
-        res.status(res3.statusCode).send();
+        res.status(res3.statusCode).send({ 'status': res3.statusCode });
         res3.setEncoding('utf8');
         res3.on('data', function (chunk) {
             console.log('BODY: ' + chunk);
@@ -150,7 +150,7 @@ app.post("/login", cors(), (req, res, next) => {
     var pet = http.request(options, function (res3) {
         console.log('STATUS: ' + res3.statusCode);
         console.log('HEADERS: ' + JSON.stringify(res3.headers));
-        res.status(res3.statusCode).send();
+        res.status(res3.statusCode).send({ 'status': res3.statusCode });
         res3.setEncoding('utf8');
         res3.on('data', function (chunk) {
             var doc = new dom().parseFromString(chunk);
